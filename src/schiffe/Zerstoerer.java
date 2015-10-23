@@ -6,6 +6,7 @@ package schiffe;
 public class Zerstoerer extends Schiff {
 
     public Zerstoerer() {
+        super();
         size = 3;
         name = "Zerstörer";
     }

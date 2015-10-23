@@ -6,6 +6,7 @@ package schiffe;
 public class Kreuzer extends Schiff {
 
     public Kreuzer() {
+        super();
         size = 2;
         name = "Kreuzer";
     }

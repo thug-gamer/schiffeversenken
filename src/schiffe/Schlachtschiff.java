@@ -6,6 +6,7 @@ package schiffe;
 public class Schlachtschiff extends Schiff {
 
     public Schlachtschiff() {
+        super();
         size = 4;
         name = "Schlachtschiff";
     }
