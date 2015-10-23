@@ -37,9 +37,15 @@ public class Level {
 	}
 	
 	public void shoot(int x, int y) {
+		boolean istShiffAufPosition = false;
 		for(Schiff schiff : schiffListe) {
-			//TODO
+			if(schiff.istGetroffen(x, y)) {
+				istShiffAufPosition = true;
+			}
 		}
+		Feld feld = map[x][y];
+		feld.setIstBeschossen(true);
+		feld.setIstSchiff(istShiffAufPosition);
 	}
 	
 	public Feld[][] getMap() {
@@ -48,8 +54,14 @@ public class Level {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		String rowText = "";
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				rowText += map[i][j].toString();
+			}
+			rowText += "\n";
+		}
+		return rowText;
 	}
 	
 	
