@@ -1,16 +1,11 @@
 package main;
 
-<<<<<<< HEAD
 import java.util.Scanner;
 
-import utils.Interpreter;
-=======
->>>>>>> branch 'master' of https://github.com/thug-gamer/schiffeversenken.git
-import level.Level;
 import schiffe.Schiff;
 import schiffe.Zerstoerer;
-
-import java.util.Scanner;
+import utils.Interpreter;
+import level.Level;
 
 public class Main {
 

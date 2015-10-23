@@ -2,6 +2,7 @@ package utils;
 
 import java.util.Scanner;
 
+import schiffe.UBoot;
 import level.Level;
 
 public class Interpreter {
@@ -25,7 +26,8 @@ public class Interpreter {
 			int yUboot = scanner.nextInt();
 			System.out.println("richtung (0 = horizontal, 1 = vertikal):");
 			int dirUboot = scanner.nextInt();
-			
+			level.addSchiff(new UBoot(xUboot, yUboot, dirUboot));
+			break;
 		
 		default:
 			System.out.println("Befehl '" + input + "' unbekannt");
