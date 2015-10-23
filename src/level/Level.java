@@ -1,5 +1,6 @@
 package level;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import constant.Constant;
@@ -13,19 +14,21 @@ public class Level {
 	
 	private int width;
 	private int height;
-	
+
 	public Level() {
-		this.width = Constant.DEFAULT_GROESSE;
-		this.height = Constant.DEFAULT_GROESSE;
-		map = new Feld[width][height];
-		fillMap();
+		init(Constant.DEFAULT_GROESSE, Constant.DEFAULT_GROESSE);
 	}
 	
 	public Level(int width, int height) {
+		init(width, height);
+	}
+
+	private void init(int width, int height) {
 		this.width = width;
 		this.height = height;
 		map = new Feld[width][height];
 		fillMap();
+		schiffListe = new ArrayList<Schiff>();
 	}
 	
 	private void fillMap() {
@@ -52,6 +55,10 @@ public class Level {
 		return this.map;
 	}
 
+	public void addSchiff(Schiff schiff) {
+		schiffListe.add(schiff);
+	}
+
 	@Override
 	public String toString() {
 		String rowText = "";
@@ -63,6 +70,4 @@ public class Level {
 		}
 		return rowText;
 	}
-	
-	
 }
