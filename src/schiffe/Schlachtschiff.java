@@ -5,9 +5,10 @@ package schiffe;
  */
 public class Schlachtschiff extends Schiff {
 
-    public Schlachtschiff() {
+    public Schlachtschiff(int x, int y, int direction) {
         super();
         size = 4;
         name = "Schlachtschiff";
+        erstelleSchiff(x, y, direction);
     }
 }

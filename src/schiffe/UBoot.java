@@ -7,9 +7,10 @@ import punkt.Punkt;
  */
 public class UBoot extends Schiff {
 
-    public UBoot() {
+    public UBoot(int x, int y, int direction) {
         super();
         size = 1;
         name = "U-Boot";
+        erstelleSchiff(x, y, direction);
     }
 }

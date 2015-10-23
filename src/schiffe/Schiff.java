@@ -19,7 +19,7 @@ public abstract class Schiff {
         punkte = new ArrayList<Punkt>();
     }
 
-    public void erstelleSchiff(int x, int y, int direction) {
+    protected void erstelleSchiff(int x, int y, int direction) {
         for (int i = 0; i < size; i++) {
             Punkt punkt = null;
             if (direction == 0) {

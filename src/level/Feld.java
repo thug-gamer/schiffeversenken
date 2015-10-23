@@ -28,6 +28,12 @@ public class Feld {
 
 	@Override
 	public String toString() {
+		if (istBeschossen == true && istSchiff == false) {
+			return "[-]";
+		}
+		else if (istBeschossen == true && istSchiff == true) {
+			return "[X]";
+		}
 		return "[ ]";
 	}
 
