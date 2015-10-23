@@ -1,9 +1,9 @@
-package Schiffe;
+package schiffe;
 
 /**
  * Created by Ich on 23.10.2015.
  */
-public abstract class Schiffe {
+public abstract class Schiff {
 
     public int size = 0;
     public String name = "name";

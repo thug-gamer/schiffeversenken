@@ -1,11 +1,11 @@
-package Schiffe;
+package schiffe;
 
 /**
  * Created by Ich on 23.10.2015.
  */
-public class UBoote extends Schiffe {
+public class UBoot extends Schiff {
 
-    public UBoote() {
+    public UBoot() {
         size = 1;
         name = "U-Boot";
     }
