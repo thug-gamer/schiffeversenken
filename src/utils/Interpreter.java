@@ -13,11 +13,11 @@ public class Interpreter {
 			System.out.println(level);
 			break;
 		case "shoot":
-			System.out.println("x eingeben:");
-			int x = scanner.nextInt();
-			System.out.println("y eingeben:");
-			int y = scanner.nextInt();
-			level.shoot(x, y);
+			System.out.print("Spalte eingeben: ");
+			String col = scanner.next();
+			System.out.print("Reihe eingeben: ");
+			int row = scanner.nextInt();
+			level.shoot(col, row);
 			break;
 		case "createuboot":
 			System.out.println("x eingeben:");

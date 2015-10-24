@@ -39,14 +39,22 @@ public class Level {
 		}
 	}
 	
-	public void shoot(int x, int y) {
+	public void shoot(String col, int row) {
+		col = col.toUpperCase();
+		int colNum = (int)col.charAt(0);
+		colNum -= 65;
+		row -= 1;
+		shoot(colNum, row);
+	}
+	
+	public void shoot(int col, int row) {
 		boolean istShiffAufPosition = false;
 		for(Schiff schiff : schiffListe) {
-			if(schiff.istGetroffen(x, y)) {
+			if(schiff.istGetroffen(row, col)) {
 				istShiffAufPosition = true;
 			}
 		}
-		Feld feld = map[x][y];
+		Feld feld = map[row][col];
 		feld.setIstBeschossen(true);
 		feld.setIstSchiff(istShiffAufPosition);
 	}
@@ -61,8 +69,16 @@ public class Level {
 
 	@Override
 	public String toString() {
-		String rowText = "";
+		String rowText = "   ";
 		for (int i = 0; i < width; i++) {
+			rowText += " " + String.valueOf(Character.toChars(i + 65)) + " ";
+		}
+		rowText += "\n";
+		for (int i = 0; i < width; i++) {
+			rowText += " " + (i + 1);
+			if((i +1) < 10) {
+				rowText += " ";
+			}
 			for (int j = 0; j < height; j++) {
 				rowText += map[i][j].toString();
 			}
