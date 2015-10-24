@@ -43,6 +43,11 @@ public abstract class Schiff {
         }
     	return false;
     }
+    
+    public boolean kolidiertMitSchiff(Schiff schiff) {
+    	//TODO
+    	return false;
+    }
 
     public boolean istZerstoert() {
         if (size == 0) {
