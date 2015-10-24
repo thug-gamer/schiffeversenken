@@ -7,7 +7,7 @@ public class Zerstoerer extends Schiff {
 
     public Zerstoerer(int row, int col, int direction) {
         super();
-        size = 3;
+        size = 4;
         name = "Zerstörer";
         this.direction = direction;
         erstelleSchiff(row, col);

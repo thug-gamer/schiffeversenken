@@ -9,7 +9,7 @@ public class UBoot extends Schiff {
 
     public UBoot(int row, int col, int direction) {
         super();
-        size = 1;
+        size = 2;
         name = "U-Boot";
         this.direction = direction;
         erstelleSchiff(row, col);

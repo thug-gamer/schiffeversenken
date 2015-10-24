@@ -76,35 +76,26 @@ public class Level {
 		int rowPoint = punkte.get(0).getRow() -1;
 		int colPoint = punkte.get(0).getCol() -1;
 
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < punkte.size() + 2; j++) {
+				try {
+					Feld feld;
+					if (schiff.getDirection() == 0) {
+						feld = map[rowPoint + i][colPoint + j];
+					} else {
+						feld = map[rowPoint + j][colPoint + i];
+					}
+					
+					if (!feld.isIstSchiff()) {
+						feld.setIstBeschossen(true);
+					}
+					else {
+						feld.setIstZerstoert(true);
+					}
+				} catch (IndexOutOfBoundsException e) { }
+			}
+		}
 
-		try {
-			if (schiff.direction == 0) {
-				for (int col = 0; col < 3; col++) {
-					for (int row = 0; row < punkte.size() + 2; row++) {
-						Feld feld = map[rowPoint + row][colPoint + col];
-						if (!feld.isIstSchiff()) {
-							feld.setIstBeschossen(true);
-						}
-						else {
-							feld.setIstZerstoert(true);
-						}
-					}
-				}
-			}
-			else if (schiff.direction == 1) {
-				for (int row = 0; row < 3; row++) {
-					for (int col = 0; col < punkte.size() + 2; col++) {
-						Feld feld = map[rowPoint + row][colPoint + col];
-						if (!feld.isIstSchiff()) {
-							feld.setIstBeschossen(true);
-						}
-						else {
-							feld.setIstZerstoert(true);
-						}
-					}
-				}
-			}
-		} catch (IndexOutOfBoundsException e) { }
 	}
 
 	@Override
