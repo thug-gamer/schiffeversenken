@@ -17,6 +17,8 @@ public class Main {
 
 		level.shoot(5, 4);
 		level.shoot(2, 4);
+		level.shoot(4, 4);
+		level.shoot(3, 4);
 
 		System.out.println(level);
 

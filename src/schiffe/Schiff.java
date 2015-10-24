@@ -12,6 +12,7 @@ public abstract class Schiff {
 
     public int size = 0;
     public String name = "name";
+    public int direction = 0;
 
 	private List<Punkt> punkte;
 
@@ -19,7 +20,7 @@ public abstract class Schiff {
         punkte = new ArrayList<Punkt>();
     }
 
-    protected void erstelleSchiff(int x, int y, int direction) {
+    protected void erstelleSchiff(int x, int y) {
         for (int i = 0; i < size; i++) {
             Punkt punkt = null;
             if (direction == 0) {
@@ -36,11 +37,19 @@ public abstract class Schiff {
     	for (int i=0; i < punkte.size(); i++) {
             if (punkte.get(i).getX() == x && punkte.get(i).getY() == y) {
                 System.out.println("Schiff wurde getroffen");
-                punkte.remove(0);
+                size -= 1;
                 return true;
             }
         }
     	return false;
+    }
+
+    public boolean istZerstoert() {
+        if (size == 0) {
+            System.out.println("Schiff wurde zerstört");
+            return true;
+        }
+        return false;
     }
         
     public List<Punkt> getPunkte() {
@@ -53,5 +62,9 @@ public abstract class Schiff {
 
     public String getName() {
         return name;
+    }
+
+    public int getDirection() {
+        return direction;
     }
 }

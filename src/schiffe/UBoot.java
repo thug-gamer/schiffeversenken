@@ -11,6 +11,7 @@ public class UBoot extends Schiff {
         super();
         size = 1;
         name = "U-Boot";
-        erstelleSchiff(x, y, direction);
+        this.direction = direction;
+        erstelleSchiff(x, y);
     }
 }

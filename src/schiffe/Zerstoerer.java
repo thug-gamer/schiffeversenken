@@ -9,6 +9,7 @@ public class Zerstoerer extends Schiff {
         super();
         size = 3;
         name = "Zerstörer";
-        erstelleSchiff(x, y, direction);
+        this.direction = direction;
+        erstelleSchiff(x, y);
     }
 }

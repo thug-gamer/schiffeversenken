@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import constant.Constant;
+import punkt.Punkt;
 import schiffe.Schiff;
 
 public class Level {
@@ -40,15 +41,17 @@ public class Level {
 	}
 	
 	public void shoot(int x, int y) {
-		boolean istShiffAufPosition = false;
-		for(Schiff schiff : schiffListe) {
-			if(schiff.istGetroffen(x, y)) {
-				istShiffAufPosition = true;
-			}
-		}
 		Feld feld = map[x][y];
 		feld.setIstBeschossen(true);
-		feld.setIstSchiff(istShiffAufPosition);
+		feld.setIstSchiff(false);
+		for(Schiff schiff : schiffListe) {
+			if(schiff.istGetroffen(x, y)) {
+				feld.setIstSchiff(true);
+			}
+			if(schiff.istZerstoert()) {
+				markiereZerstoertesSchiff(schiff);
+			}
+		}
 	}
 	
 	public Feld[][] getMap() {
@@ -57,6 +60,43 @@ public class Level {
 
 	public void addSchiff(Schiff schiff) {
 		schiffListe.add(schiff);
+	}
+
+	public void markiereZerstoertesSchiff(Schiff schiff) {
+		List<Punkt> punkte = schiff.getPunkte();
+
+		int x = punkte.get(0).getX() -1;
+		int y = punkte.get(0).getY() -1;
+
+
+		try {
+			if (schiff.direction == 0) {
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < punkte.size() + 2; j++) {
+						Feld feld = map[x + j][y + i];
+						if (!feld.isIstSchiff()) {
+							feld.setIstBeschossen(true);
+						}
+						else {
+							feld.setIstZerstoert(true);
+						}
+					}
+				}
+			}
+			else if (schiff.direction == 1) {
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < punkte.size() + 2; j++) {
+						Feld feld = map[x + i][y + j];
+						if (!feld.isIstSchiff()) {
+							feld.setIstBeschossen(true);
+						}
+						else {
+							feld.setIstZerstoert(true);
+						}
+					}
+				}
+			}
+		} catch (IndexOutOfBoundsException e) { }
 	}
 
 	@Override
