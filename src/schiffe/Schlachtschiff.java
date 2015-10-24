@@ -9,6 +9,7 @@ public class Schlachtschiff extends Schiff {
         super();
         size = 4;
         name = "Schlachtschiff";
-        erstelleSchiff(x, y, direction);
+        this.direction = direction;
+        erstelleSchiff(x, y);
     }
 }

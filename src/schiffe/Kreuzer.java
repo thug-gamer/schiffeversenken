@@ -9,6 +9,7 @@ public class Kreuzer extends Schiff {
         super();
         size = 2;
         name = "Kreuzer";
-        erstelleSchiff(x, y, direction);
+        this.direction = direction;
+        erstelleSchiff(x, y);
     }
 }

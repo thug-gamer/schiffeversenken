@@ -4,10 +4,12 @@ public class Feld {
 	
 	private boolean istSchiff;
 	private boolean istBeschossen;
-	
+	private boolean istZerstoert;
+
 	public Feld() {
 		istSchiff = false;
 		istBeschossen = false;
+		istZerstoert = false;
 	}
 
 	public boolean isIstSchiff() {
@@ -26,9 +28,16 @@ public class Feld {
 		this.istBeschossen = istBeschossen;
 	}
 
+	public void setIstZerstoert(boolean istZerstoert) {
+		this.istZerstoert = istZerstoert;
+	}
+
 	@Override
 	public String toString() {
-		if (istBeschossen == true && istSchiff == false) {
+		if (istZerstoert == true) {
+			return "[#]";
+		}
+		else if (istBeschossen == true && istSchiff == false) {
 			return "[-]";
 		}
 		else if (istBeschossen == true && istSchiff == true) {
@@ -36,5 +45,4 @@ public class Feld {
 		}
 		return "[ ]";
 	}
-
 }
