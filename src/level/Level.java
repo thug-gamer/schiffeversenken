@@ -71,31 +71,19 @@ public class Level {
 	}
 
 	public void markiereZerstoertesSchiff(Schiff schiff) {
-		List<Punkt> punkte = schiff.getPunkte();
+		for (Punkt p : schiff.getBereich()) {
+			try {
+				Feld feld;
+				feld = map[p.getRow()][p.getCol()];
 
-		int rowPoint = punkte.get(0).getRow() -1;
-		int colPoint = punkte.get(0).getCol() -1;
-
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < punkte.size() + 2; j++) {
-				try {
-					Feld feld;
-					if (schiff.getDirection() == 0) {
-						feld = map[rowPoint + i][colPoint + j];
-					} else {
-						feld = map[rowPoint + j][colPoint + i];
-					}
-					
-					if (!feld.isIstSchiff()) {
-						feld.setIstBeschossen(true);
-					}
-					else {
-						feld.setIstZerstoert(true);
-					}
-				} catch (IndexOutOfBoundsException e) { }
-			}
+				if (!feld.isIstSchiff()) {
+					feld.setIstBeschossen(true);
+				}
+				else {
+					feld.setIstZerstoert(true);
+				}
+			} catch (IndexOutOfBoundsException e) { }
 		}
-
 	}
 
 	@Override
