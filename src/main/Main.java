@@ -12,13 +12,14 @@ public class Main {
 	public static void main(String[] args) {
 		Level level = new Level();
 
-		Schiff zerstoerer = new Zerstoerer(3, 4, 0);
+		Schiff zerstoerer = new Zerstoerer(0, 0, 0);
 		level.addSchiff(zerstoerer);
 
-		level.shoot(5, 4);
-		level.shoot(2, 4);
-		level.shoot(4, 4);
-		level.shoot(3, 4);
+		level.shoot(1, 0);
+		level.shoot(2, 0);
+		level.shoot(3, 0);
+		level.shoot(4, 0);
+		level.shoot(0, 0);
 
 		System.out.println(level);
 

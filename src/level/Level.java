@@ -77,34 +77,26 @@ public class Level {
 		int y = punkte.get(0).getY() -1;
 
 
-		try {
-			if (schiff.direction == 0) {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < punkte.size() + 2; j++) {
-						Feld feld = map[x + j][y + i];
-						if (!feld.isIstSchiff()) {
-							feld.setIstBeschossen(true);
-						}
-						else {
-							feld.setIstZerstoert(true);
-						}
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < punkte.size() + 2; j++) {
+				try {
+					Feld feld;
+					if (schiff.getDirection() == 0) {
+						feld = map[x + i][y + j];
+					} else {
+						feld = map[x + j][y + i];
 					}
-				}
-			}
-			else if (schiff.direction == 1) {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < punkte.size() + 2; j++) {
-						Feld feld = map[x + i][y + j];
-						if (!feld.isIstSchiff()) {
-							feld.setIstBeschossen(true);
-						}
-						else {
-							feld.setIstZerstoert(true);
-						}
+
+					if (!feld.isIstSchiff()) {
+						feld.setIstBeschossen(true);
 					}
-				}
+					else {
+						feld.setIstZerstoert(true);
+					}
+				} catch (IndexOutOfBoundsException e) { }
 			}
-		} catch (IndexOutOfBoundsException e) { }
+		}
+
 	}
 
 	@Override

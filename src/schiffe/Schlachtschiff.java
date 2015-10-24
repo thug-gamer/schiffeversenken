@@ -7,7 +7,7 @@ public class Schlachtschiff extends Schiff {
 
     public Schlachtschiff(int x, int y, int direction) {
         super();
-        size = 4;
+        size = 5;
         name = "Schlachtschiff";
         this.direction = direction;
         erstelleSchiff(x, y);

@@ -7,7 +7,7 @@ public class Kreuzer extends Schiff {
 
     public Kreuzer(int x, int y, int direction) {
         super();
-        size = 2;
+        size = 3;
         name = "Kreuzer";
         this.direction = direction;
         erstelleSchiff(x, y);
