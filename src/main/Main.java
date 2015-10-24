@@ -12,9 +12,9 @@ public class Main {
 	public static void main(String[] args) {
 		Level level = new Level();
 
-		Schiff zerstoerer = new Zerstoerer(0, 0, 0);
+		Schiff zerstoerer = new Zerstoerer(0, 0, 1);
 		level.addSchiff(zerstoerer);
-
+		System.out.println(level);
 		level.shoot(1, 0);
 		level.shoot(2, 0);
 		level.shoot(3, 0);
