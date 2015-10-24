@@ -20,13 +20,13 @@ public class Interpreter {
 				level.shoot(col, row);
 				break;
 			case "createuboot":
-				System.out.println("x eingeben:");
-				int xUboot = scanner.nextInt();
-				System.out.println("y eingeben:");
-				int yUboot = scanner.nextInt();
+				System.out.println("Reihe eingeben:");
+				int rowUboot = scanner.nextInt();
+				System.out.println("Spalte eingeben:");
+				int colUboot = scanner.nextInt();
 				System.out.println("richtung (0 = horizontal, 1 = vertikal):");
 				int dirUboot = scanner.nextInt();
-				level.addSchiff(new UBoot(xUboot, yUboot, dirUboot));
+				level.addSchiff(new UBoot(rowUboot, colUboot, dirUboot));
 				break;
 			
 			default:

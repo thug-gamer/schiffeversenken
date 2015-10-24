@@ -33,9 +33,9 @@ public class Level {
 	}
 	
 	private void fillMap() {
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				map[i][j] = new Feld();
+		for (int row = 0; row < width; row++) {
+			for (int col = 0; col < height; col++) {
+				map[row][col] = new Feld();
 			}
 		}
 	}
@@ -45,15 +45,15 @@ public class Level {
 		int colNum = (int)col.charAt(0);
 		colNum -= 65;
 		row -= 1;
-		shoot(colNum, row);
+		shoot(row, colNum);
 	}
 	
-	public void shoot(int x, int y) {
-		Feld feld = map[x][y];
+	public void shoot(int row, int col) {
+		Feld feld = map[row][col];
 		feld.setIstBeschossen(true);
 		feld.setIstSchiff(false);
 		for(Schiff schiff : schiffListe) {
-			if(schiff.istGetroffen(x, y)) {
+			if(schiff.istGetroffen(row, col)) {
 				feld.setIstSchiff(true);
 			}
 			if(schiff.istZerstoert()) {
@@ -73,15 +73,15 @@ public class Level {
 	public void markiereZerstoertesSchiff(Schiff schiff) {
 		List<Punkt> punkte = schiff.getPunkte();
 
-		int x = punkte.get(0).getX() -1;
-		int y = punkte.get(0).getY() -1;
+		int rowPoint = punkte.get(0).getRow() -1;
+		int colPoint = punkte.get(0).getCol() -1;
 
 
 		try {
 			if (schiff.direction == 0) {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < punkte.size() + 2; j++) {
-						Feld feld = map[x + j][y + i];
+				for (int col = 0; col < 3; col++) {
+					for (int row = 0; row < punkte.size() + 2; row++) {
+						Feld feld = map[rowPoint + row][colPoint + col];
 						if (!feld.isIstSchiff()) {
 							feld.setIstBeschossen(true);
 						}
@@ -92,9 +92,9 @@ public class Level {
 				}
 			}
 			else if (schiff.direction == 1) {
-				for (int i = 0; i < 3; i++) {
-					for (int j = 0; j < punkte.size() + 2; j++) {
-						Feld feld = map[x + i][y + j];
+				for (int row = 0; row < 3; row++) {
+					for (int col = 0; col < punkte.size() + 2; col++) {
+						Feld feld = map[rowPoint + row][colPoint + col];
 						if (!feld.isIstSchiff()) {
 							feld.setIstBeschossen(true);
 						}
@@ -109,21 +109,21 @@ public class Level {
 
 	@Override
 	public String toString() {
-		String rowText = "   ";
-		for (int i = 0; i < width; i++) {
-			rowText += " " + String.valueOf(Character.toChars(i + 65)) + " ";
+		String result = "   ";
+		for (int col = 0; col < width; col++) {
+			result += " " + String.valueOf(Character.toChars(col + 65)) + " ";
 		}
-		rowText += "\n";
-		for (int i = 0; i < width; i++) {
-			rowText += " " + (i + 1);
-			if((i +1) < 10) {
-				rowText += " ";
+		result += "\n";
+		for (int row = 0; row < width; row++) {
+			result += " " + (row + 1);
+			if((row +1) < 10) {
+				result += " ";
 			}
-			for (int j = 0; j < height; j++) {
-				rowText += map[i][j].toString();
+			for (int col = 0; col < height; col++) {
+				result += map[row][col].toString();
 			}
-			rowText += "\n";
+			result += "\n";
 		}
-		return rowText;
+		return result;
 	}
 }

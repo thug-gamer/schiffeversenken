@@ -20,22 +20,22 @@ public abstract class Schiff {
         punkte = new ArrayList<Punkt>();
     }
 
-    protected void erstelleSchiff(int x, int y) {
+    protected void erstelleSchiff(int row, int col) {
         for (int i = 0; i < size; i++) {
             Punkt punkt = null;
-            if (direction == 0) {
-                punkt = new Punkt(x+i, y);
+            if (direction == 1) {
+                punkt = new Punkt(row+i, col);
             }
-            else if (direction == 1) {
-                punkt = new Punkt(x, y+i);
+            else if (direction == 0) {
+                punkt = new Punkt(row, col+i);
             }
             punkte.add(punkt);
         }
     }
     
-    public boolean istGetroffen(int x, int y) {
+    public boolean istGetroffen(int row, int col) {
     	for (int i=0; i < punkte.size(); i++) {
-            if (punkte.get(i).getX() == x && punkte.get(i).getY() == y) {
+            if (punkte.get(i).getRow() == row && punkte.get(i).getCol() == col) {
                 System.out.println("Schiff wurde getroffen");
                 size -= 1;
                 return true;

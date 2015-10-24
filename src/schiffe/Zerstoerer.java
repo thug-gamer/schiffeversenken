@@ -5,11 +5,11 @@ package schiffe;
  */
 public class Zerstoerer extends Schiff {
 
-    public Zerstoerer(int x, int y, int direction) {
+    public Zerstoerer(int row, int col, int direction) {
         super();
         size = 3;
         name = "Zerstörer";
         this.direction = direction;
-        erstelleSchiff(x, y);
+        erstelleSchiff(row, col);
     }
 }
