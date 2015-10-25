@@ -16,6 +16,7 @@ public abstract class Schiff {
 
 	private List<Punkt> punkte;
     private List<Punkt> bereich;
+    private boolean istZerstoert = false;
 
     public Schiff() {
         punkte = new ArrayList<Punkt>();
@@ -62,6 +63,15 @@ public abstract class Schiff {
         }
     	return false;
     }
+
+    public boolean isIstZerstoert() {
+        if (size == 0 && istZerstoert == false) {
+            istZerstoert = true;
+            System.out.println("Schiff wurde zerstï¿½rt");
+            return true;
+        }
+        return false;
+    }
     
     public boolean kolidiertMitSchiff(Schiff schiff) {
         for(Punkt b : bereich) {
@@ -72,14 +82,6 @@ public abstract class Schiff {
             }
         }
     	return false;
-    }
-
-    public boolean istZerstoert() {
-        if (size == 0) {
-            System.out.println("Schiff wurde zerstört");
-            return true;
-        }
-        return false;
     }
         
     public List<Punkt> getPunkte() {

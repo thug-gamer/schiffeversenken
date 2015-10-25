@@ -89,7 +89,7 @@ public class Level {
 		case "U-Boot":
 			schiff = new UBoot(row, col, direction);
 			break;
-		case "Zerstörer":
+		case "Zerstï¿½rer":
 			schiff = new Zerstoerer(row, col, direction);
 			break;
 
@@ -123,10 +123,10 @@ public class Level {
 		feld.setIstBeschossen(true);
 		feld.setIstSchiff(false);
 		for(Schiff schiff : schiffListe) {
-			if(schiff.istGetroffen(row, col)) {
+			if (schiff.istGetroffen(row, col)) {
 				feld.setIstSchiff(true);
 			}
-			if(schiff.istZerstoert()) {
+			if (schiff.isIstZerstoert()) {
 				markiereZerstoertesSchiff(schiff);
 			}
 		}
