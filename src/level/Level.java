@@ -2,8 +2,6 @@ package level;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -110,7 +108,7 @@ public class Level {
 		}
 	}
 	
-	public void shoot(String col, int row) {
+	public void shoot(String col, int row) throws IndexOutOfBoundsException {
 		col = col.toUpperCase();
 		int colNum = (int)col.charAt(0);
 		colNum -= 65;
@@ -118,8 +116,9 @@ public class Level {
 		shoot(row, colNum);
 	}
 	
-	public void shoot(int row, int col) {
-		Feld feld = map[row][col];
+	public void shoot(int row, int col) throws IndexOutOfBoundsException {
+		Feld feld;
+		feld = map[row][col];
 		feld.setIstBeschossen(true);
 		feld.setIstSchiff(false);
 		for(Schiff schiff : schiffListe) {

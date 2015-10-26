@@ -26,11 +26,18 @@ public class Main {
 //		System.out.println(level);
 
 		Scanner scanner = new Scanner(System.in);
+		writeHelpText(level);
 		while(true) {
-			System.out.println("Befehl:");
 			String input = scanner.next();
 			Interpreter.interpret(input, level, scanner);
 		}
+	}
+
+	private static void writeHelpText(Level level) {
+		System.out.println(level);
+		System.out.println("Schieﬂen Beispiel: B5");
+		System.out.println("Spielfeld anzeigen: getmap");
+		
 	}
 
 }
