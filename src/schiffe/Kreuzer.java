@@ -8,7 +8,7 @@ public class Kreuzer extends Schiff {
     public Kreuzer(int row, int col, int direction) {
         super();
         size = 3;
-        name = "Kreuzer";
+        name = SchiffName.KREUZER;
         this.direction = direction;
         erstelleSchiff(row, col);
     }

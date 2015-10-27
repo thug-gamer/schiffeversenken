@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class Schiff {
 
     public int size = 0;
-    public String name = "name";
+    public SchiffName name = SchiffName.SCHIFF;
     public int direction = 0;
 
 	private List<Punkt> punkte;
@@ -67,7 +67,7 @@ public abstract class Schiff {
     public boolean isIstZerstoert() {
         if (size == 0 && istZerstoert == false) {
             istZerstoert = true;
-            System.out.println("Schiff wurde zerstï¿½rt");
+            System.out.println("Schiff wurde zerstört");
             return true;
         }
         return false;
@@ -96,7 +96,7 @@ public abstract class Schiff {
         return size;
     }
 
-    public String getName() {
+    public SchiffName getName() {
         return name;
     }
 

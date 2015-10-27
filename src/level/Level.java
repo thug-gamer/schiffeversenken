@@ -5,13 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import main.Main;
 import punkt.Punkt;
 import schiffe.Kreuzer;
 import schiffe.Schiff;
+import schiffe.SchiffName;
 import schiffe.Schlachtschiff;
 import schiffe.UBoot;
 import schiffe.Zerstoerer;
 import constant.Constant;
+import error.SchiffeVersenkenException;
 
 public class Level {
 	
@@ -57,7 +60,8 @@ public class Level {
 				new UBoot(0, 0, 0),
 				new UBoot(0, 0, 0),
 				new UBoot(0, 0, 0),
-				new UBoot(0, 0, 0));
+				new UBoot(0, 0, 0)
+				);
 		for(Schiff schiff : list) {
 			setShiffAtRandomPosition(schiff);
 		}
@@ -76,18 +80,18 @@ public class Level {
 		int col = rand.nextInt(maxWidth);
 		int row = rand.nextInt(maxHeight);
 		
-		String typ = schiff.getName();
+		SchiffName typ = schiff.getName();
 		switch (typ) {
-		case "Kreuzer":
+		case KREUZER:
 			schiff = new Kreuzer(row, col, direction);
 			break;
-		case "Schlachtschiff":
+		case SCHLACHTSCHIFF:
 			schiff = new Schlachtschiff(row, col, direction);
 			break;
-		case "U-Boot":
+		case UBOOT:
 			schiff = new UBoot(row, col, direction);
 			break;
-		case "Zerst�rer":
+		case ZERSTOERER:
 			schiff = new Zerstoerer(row, col, direction);
 			break;
 
@@ -119,15 +123,25 @@ public class Level {
 	public void shoot(int row, int col) throws IndexOutOfBoundsException {
 		Feld feld;
 		feld = map[row][col];
+		if(feld.getIstBeschossen()) {
+			throw new SchiffeVersenkenException("Angegebene Position ist schon beschossen.");
+		}
 		feld.setIstBeschossen(true);
 		feld.setIstSchiff(false);
+		boolean continueGame = false;
 		for(Schiff schiff : schiffListe) {
 			if (schiff.istGetroffen(row, col)) {
 				feld.setIstSchiff(true);
 			}
 			if (schiff.isIstZerstoert()) {
 				markiereZerstoertesSchiff(schiff);
+				continueGame = continueGame && false;
+			} else {
+				continueGame = true;
 			}
+		}
+		if(!continueGame) {
+			Main.setDoRun(false);
 		}
 	}
 	

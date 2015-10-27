@@ -1,11 +1,18 @@
 package main;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 import level.Level;
 import utils.Interpreter;
 
 public class Main {
+	
+	private static boolean doRun = true;
+
 
 	public static void main(String[] args) {
 		Level level = new Level();
@@ -27,17 +34,27 @@ public class Main {
 
 		Scanner scanner = new Scanner(System.in);
 		writeHelpText(level);
-		while(true) {
-			String input = scanner.next();
+		while(doRun) {
+			String input = scanner.nextLine();
 			Interpreter.interpret(input, level, scanner);
+		}
+		try {
+			List<String> gameOverStringList = Files.readAllLines(Paths.get("resource/gameover.schiff"));
+			gameOverStringList.stream().forEach(s -> {
+				System.out.println(s);
+			});
+		} catch (IOException e1) {
+			System.err.println("Datei gameover.schiff nicht gefunden");
 		}
 	}
 
 	private static void writeHelpText(Level level) {
 		System.out.println(level);
 		System.out.println("Schieﬂen Beispiel: B5");
-		System.out.println("Spielfeld anzeigen: getmap");
 		
+	}
+	public static void setDoRun(boolean doRun) {
+		Main.doRun = doRun;
 	}
 
 }

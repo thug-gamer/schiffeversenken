@@ -31,6 +31,10 @@ public class Feld {
 	public void setIstZerstoert(boolean istZerstoert) {
 		this.istZerstoert = istZerstoert;
 	}
+	
+	public boolean getIstBeschossen() {
+		return istBeschossen;
+	}
 
 	@Override
 	public String toString() {
